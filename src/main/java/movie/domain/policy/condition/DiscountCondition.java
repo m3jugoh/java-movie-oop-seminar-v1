@@ -1,7 +1,7 @@
 package movie.domain.policy.condition;
 
-import movie.domain.DiscountContext;
+import movie.domain.Ticket;
 
 public interface DiscountCondition {
-    boolean isSatisfiedBy(DiscountContext context);
+    boolean isSatisfiedBy(Ticket ticket);
 }

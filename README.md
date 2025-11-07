@@ -37,6 +37,8 @@
    - VIP 혜택(Benefit 2): B + C
    - 장애인 겸 VIP 혜택(Benefit 3): Max(Benefit 1, Benefit 2)
 
+도메인 중심 설계
+ - Ticket Class에서 할인 정책 주도
 =================
 
 [프로그래밍 요구 사항]

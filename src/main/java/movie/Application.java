@@ -1,10 +1,11 @@
 package movie;
 
-import java.util.Arrays;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.List;
 
 import movie.domain.Customer;
 import movie.domain.Money;
@@ -12,7 +13,6 @@ import movie.domain.Movie;
 import movie.domain.Showing;
 import movie.service.DiscountPolicyFactory;
 import movie.service.ReservationService;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {

@@ -2,8 +2,8 @@ package movie.domain.policy;
 
 import java.util.List;
 
-import movie.domain.DiscountContext;
 import movie.domain.Money;
+import movie.domain.Ticket;
 
 public class OverlappedDiscountPolicy implements DiscountPolicy {
     private final List<DiscountPolicy> policies;
@@ -13,9 +13,9 @@ public class OverlappedDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public Money calculateDiscountAmount(DiscountContext context) {
+    public Money calculateDiscountAmount(Ticket ticket) {
         return policies.stream()
-                .map(p -> p.calculateDiscountAmount(context))
+                .map(p -> p.calculateDiscountAmount(ticket))
                 .reduce(Money.ZERO, Money::plus);
     }
 }

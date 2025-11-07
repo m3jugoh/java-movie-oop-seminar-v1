@@ -1,7 +1,7 @@
 package movie.domain.policy;
 
-import movie.domain.DiscountContext;
 import movie.domain.Money;
+import movie.domain.Ticket;
 import movie.domain.policy.condition.DiscountCondition;
 
 public class AmountDiscountPolicy extends DefaultDiscountPolicy {
@@ -13,7 +13,7 @@ public class AmountDiscountPolicy extends DefaultDiscountPolicy {
     }
 
     @Override
-    protected Money getDiscountAmount(DiscountContext context) {
+    protected Money getDiscountAmount(Ticket ticket) {
         return discountAmount;
     }
 }

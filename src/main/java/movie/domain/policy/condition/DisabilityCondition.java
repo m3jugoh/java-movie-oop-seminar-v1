@@ -1,12 +1,12 @@
 package movie.domain.policy.condition;
 
-import movie.domain.DiscountContext;
+import movie.domain.Ticket;
 
 // 장애인 조건
 public class DisabilityCondition implements DiscountCondition {
     @Override
-    public boolean isSatisfiedBy(DiscountContext context) {
-        return context.isCustomerDisability();
+    public boolean isSatisfiedBy(Ticket ticket) {
+        return ticket.isCustomerDisability();
     }
 }
 

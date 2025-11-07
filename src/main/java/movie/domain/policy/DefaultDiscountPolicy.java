@@ -2,8 +2,8 @@ package movie.domain.policy;
 
 import java.util.List;
 
-import movie.domain.DiscountContext;
 import movie.domain.Money;
+import movie.domain.Ticket;
 import movie.domain.policy.condition.DiscountCondition;
 
 public abstract class DefaultDiscountPolicy implements DiscountPolicy {
@@ -14,13 +14,13 @@ public abstract class DefaultDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public Money calculateDiscountAmount(DiscountContext context) {
+    public Money calculateDiscountAmount(Ticket ticket) {
         if (conditions.isEmpty() ||
-                conditions.stream().anyMatch(cond -> cond.isSatisfiedBy(context))) {
-            return getDiscountAmount(context);
+                conditions.stream().anyMatch(cond -> cond.isSatisfiedBy(ticket))) {
+            return getDiscountAmount(ticket);
         }
         return Money.ZERO;
     }
 
-    protected abstract Money getDiscountAmount(DiscountContext context);
+    protected abstract Money getDiscountAmount(Ticket ticket);
 }

@@ -1,8 +1,8 @@
 package movie.domain.policy;
 
-import movie.domain.DiscountContext;
 import movie.domain.Money;
+import movie.domain.Ticket;
 
 public interface DiscountPolicy {
-    Money calculateDiscountAmount(DiscountContext context);
+    Money calculateDiscountAmount(Ticket ticket);
 }
