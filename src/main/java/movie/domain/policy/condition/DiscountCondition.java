@@ -1,7 +1,5 @@
 package movie.domain.policy.condition;
 
-import movie.domain.Ticket;
-
-public interface DiscountCondition {
-    boolean isSatisfiedBy(Ticket ticket);
+public interface DiscountCondition<T> {
+    boolean isSatisfiedBy(T t);
 }

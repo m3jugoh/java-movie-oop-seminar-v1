@@ -3,19 +3,18 @@ package movie.domain.policy;
 import java.util.List;
 
 import movie.domain.Money;
-import movie.domain.Ticket;
 
-public class OverlappedDiscountPolicy implements DiscountPolicy {
-    private final List<DiscountPolicy> policies;
+public class OverlappedDiscountPolicy<T> implements DiscountPolicy<T> {
+    private final List<DiscountPolicy<T>> policies;
 
-    public OverlappedDiscountPolicy(DiscountPolicy... policies) {
+    public OverlappedDiscountPolicy(DiscountPolicy<T>... policies) {
         this.policies = List.of(policies);
     }
 
     @Override
-    public Money calculateDiscountAmount(Ticket ticket) {
+    public Money calculateDiscountAmount(T t) {
         return policies.stream()
-                .map(p -> p.calculateDiscountAmount(ticket))
+                .map(p -> p.calculateDiscountAmount(t))
                 .reduce(Money.ZERO, Money::plus);
     }
 }

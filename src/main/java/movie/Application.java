@@ -51,5 +51,16 @@ public class Application {
                 System.out.println("-------------------------------------------------");
             }
         }
+
+        System.out.println("\n=================================================");
+        System.out.println("===== Group =====");
+        System.out.println("=================================================");
+        for (Customer currentCustomer : customers) {
+            String customerType = String.format("Disability:%s, VIP:%s", currentCustomer.isDisability(), currentCustomer.isVip());
+            System.out.printf("### Scenario %d: Customer (%s) ###\n", scenarioCount++, customerType);
+            Money finalFee = reservationService.reserve(currentCustomer, showings);
+            System.out.println("Final Fee: " + finalFee.toLong() + " KRW");
+            System.out.println("-------------------------------------------------");
+        }
     }
 }

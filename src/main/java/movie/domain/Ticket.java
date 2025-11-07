@@ -7,9 +7,9 @@ import movie.domain.policy.DiscountPolicy;
 public class Ticket {
     private final Customer customer;
     private final Showing showing;
-    private final DiscountPolicy discountPolicy; // ★ Ticket이 자신의 '할인 전략'을 직접 소유
+    private final DiscountPolicy<Ticket> discountPolicy; // ★ Ticket이 자신의 '할인 전략'을 직접 소유
 
-    public Ticket(Customer customer, Showing showing, DiscountPolicy discountPolicy) {
+    public Ticket(Customer customer, Showing showing, DiscountPolicy<Ticket> discountPolicy) {
         this.customer = customer;
         this.showing = showing;
         this.discountPolicy = discountPolicy;

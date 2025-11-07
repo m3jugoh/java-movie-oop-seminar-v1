@@ -1,19 +1,20 @@
 package movie.domain.policy;
 
 import movie.domain.Money;
-import movie.domain.Ticket;
 import movie.domain.policy.condition.DiscountCondition;
 
-public class PercentDiscountPolicy extends DefaultDiscountPolicy {
+public abstract class PercentDiscountPolicy<T> extends DefaultDiscountPolicy<T> {
     private final double percent;
 
-    public PercentDiscountPolicy(double percent, DiscountCondition... conditions) {
+    public PercentDiscountPolicy(double percent, DiscountCondition<T>... conditions) {
         super(conditions);
         this.percent = percent;
     }
 
     @Override
-    protected Money getDiscountAmount(Ticket ticket) {
-        return ticket.getMovieFee().times(percent);
+    protected Money getDiscountAmount(T t) {
+        return getOriginalAmount(t).times(percent);
     }
+
+    abstract protected Money getOriginalAmount(T t);
 }
