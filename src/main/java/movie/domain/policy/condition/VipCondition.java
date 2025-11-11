@@ -1,11 +1,10 @@
 package movie.domain.policy.condition;
 
-import movie.domain.Ticket;
+import movie.domain.CustomerType;
 
-// VIP 조건
-public class VipCondition implements DiscountCondition<Ticket> {
-    @Override
-    public boolean isSatisfiedBy(Ticket t) {
-        return t.isCustomerVip();
+// VipCondition은 이제 코드가 없는 선언적인 클래스가 된다.
+public class VipCondition extends AbstractCustomerCondition {
+    public VipCondition() {
+        super(CustomerType.VIP);
     }
 }

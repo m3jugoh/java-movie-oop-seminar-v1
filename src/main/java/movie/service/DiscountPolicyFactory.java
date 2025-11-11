@@ -10,9 +10,9 @@ import movie.domain.policy.PickOnePolicy;
 import movie.domain.policy.TicketPercentDiscountPolicy;
 import movie.domain.policy.TicketsPercentDiscountPolicy;
 import movie.domain.policy.condition.DisabilityCondition;
+import movie.domain.policy.condition.DiscountableTimeCondition;
 import movie.domain.policy.condition.GroupCountCondition;
 import movie.domain.policy.condition.MovieDayCondition;
-import movie.domain.policy.condition.TimeCondition;
 import movie.domain.policy.condition.VipCondition;
 
 public class DiscountPolicyFactory {
@@ -36,7 +36,7 @@ public class DiscountPolicyFactory {
     public DiscountPolicy<Ticket> createDefaultPolicy() {
         return new OverlappedDiscountPolicy<>(
                 new TicketPercentDiscountPolicy(0.1, new MovieDayCondition()), // 영화의 날 10% 할인
-                new AmountDiscountPolicy<>(Money.wons(2000), new TimeCondition())
+                new AmountDiscountPolicy<>(Money.wons(2000), new DiscountableTimeCondition())
                 // 조조/심야 2000원 할인
         );
     }

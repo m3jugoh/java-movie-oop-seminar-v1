@@ -5,6 +5,6 @@ import movie.domain.Tickets;
 public class GroupCountCondition implements DiscountCondition<Tickets> {
     @Override
     public boolean isSatisfiedBy(Tickets tickets) {
-        return tickets.ticketCount() >= 4;
+        return tickets.isGroupCountable();
     }
 }

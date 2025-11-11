@@ -7,11 +7,13 @@ import movie.domain.policy.DiscountPolicy;
 public class Ticket {
     private final Customer customer;
     private final Showing showing;
+    private final Theater theater;
     private final DiscountPolicy<Ticket> discountPolicy; // ★ Ticket이 자신의 '할인 전략'을 직접 소유
 
-    public Ticket(Customer customer, Showing showing, DiscountPolicy<Ticket> discountPolicy) {
+    public Ticket(Customer customer, Showing showing, Theater theater, DiscountPolicy<Ticket> discountPolicy) {
         this.customer = customer;
         this.showing = showing;
+        this.theater = theater;
         this.discountPolicy = discountPolicy;
     }
 
@@ -25,19 +27,23 @@ public class Ticket {
         return showing.getMovieFee().minus(discountAmount);
     }
 
-    public boolean isCustomerDisability() {
-        return customer.isDisability();
-    }
-
-    public boolean isCustomerVip() {
-        return customer.isVip();
-    }
-
     public LocalDateTime getWhenShowing() {
         return showing.getWhenShowing();
     }
 
     public Money getMovieFee() {
         return showing.getMovieFee();
+    }
+
+    public boolean isMatchCustomer(CustomerType condition) {
+        return customer.match(condition);
+    }
+
+    public boolean isMovieDay() {
+        return theater.isMovieDay(getWhenShowing());
+    }
+
+    public boolean isDiscountableTime() {
+        return theater.isDiscountableTime(getWhenShowing());
     }
 }

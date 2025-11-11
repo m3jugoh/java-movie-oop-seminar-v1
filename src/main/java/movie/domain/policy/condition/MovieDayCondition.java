@@ -1,7 +1,5 @@
 package movie.domain.policy.condition;
 
-import java.util.List;
-
 import movie.domain.Ticket;
 
 /**
@@ -9,10 +7,8 @@ import movie.domain.Ticket;
  */
 
 public class MovieDayCondition implements DiscountCondition<Ticket> {
-    private final List<Integer> movieDays = List.of(10, 20, 30);
-
     @Override
     public boolean isSatisfiedBy(Ticket t) {
-        return movieDays.contains(t.getWhenShowing().getDayOfMonth());
+        return t.isMovieDay();
     }
 }
